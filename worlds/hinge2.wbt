@@ -2,78 +2,14 @@
 WorldInfo {
 }
 Viewpoint {
-  orientation -0.8943703803704003 0.42289560617162186 0.14581127870244417 0.6915841763718966
-  position 0.8805622695570262 2.7162816976435384 3.00405390202609
+  orientation -0.7941638723008185 0.5798839471775796 0.1817645502784282 0.7518437617070588
+  position 1.2676920295660519 2.1188367212830386 1.544755959803288
 }
 TexturedBackground {
 }
 TexturedBackgroundLight {
 }
 Floor {
-}
-DEF G_BLUE_TABLE Solid {
-  translation 0 0.5200000000000002 -0.8300000000000004
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColor 0.4470588235294118 0.6235294117647059 0.8117647058823529
-      }
-      geometry Box {
-        size 1 0.01 0.1
-      }
-    }
-    HingeJoint {
-      jointParameters HingeJointParameters {
-        axis 0 0 1
-        anchor 0.5 0 0
-        minStop -1
-        maxStop 1
-        springConstant 0.5
-        dampingConstant 0.5
-        staticFriction 0.01
-      }
-      endPoint Solid {
-        translation 0.6 0 0
-        rotation 0 0 1 0
-        children [
-          Shape {
-            appearance PBRAppearance {
-              baseColor 0.8 0 0
-            }
-            geometry DEF G_RED_TABLE Box {
-              size 0.2 0.01 0.1
-            }
-          }
-          HingeJoint {
-            jointParameters HingeJointParameters {
-              axis 0 0 1
-              anchor 0.1 0 0
-            }
-            endPoint Solid {
-              translation 0.2 0 0
-              rotation 0 0 1 0
-              children [
-                Shape {
-                  appearance PBRAppearance {
-                    baseColor 0.3058823529411765 0.6039215686274509 0.023529411764705882
-                  }
-                  geometry DEF G_GREEN_TABLE Box {
-                    size 0.2 0.01 0.1
-                  }
-                }
-              ]
-              boundingObject USE G_GREEN_TABLE
-              physics Physics {
-              }
-            }
-          }
-        ]
-        boundingObject USE G_RED_TABLE
-        physics Physics {
-        }
-      }
-    }
-  ]
 }
 Solid {
   translation 0 0.5 0
@@ -91,6 +27,7 @@ Solid {
       jointParameters HingeJointParameters {
         axis 0 1 0
         anchor 0 0.5 0
+        staticFriction 0.01
       }
       endPoint Solid {
         translation 0.25 0.51 0
@@ -107,6 +44,7 @@ Solid {
             jointParameters HingeJointParameters {
               axis 0 0 1
               anchor 0.25 0 0
+              staticFriction 0.01
             }
             endPoint Solid {
               translation 0.3 0 0
@@ -118,6 +56,29 @@ Solid {
                   }
                   geometry Box {
                     size 0.1 0.01 0.1
+                  }
+                }
+                HingeJoint {
+                  jointParameters HingeJointParameters {
+                    anchor 0.05 0 0
+                    staticFriction 0.01
+                  }
+                  endPoint Solid {
+                    translation 0.125 0 0
+                    rotation 1 0 0 0
+                    children [
+                      DEF G_BLUE_TABLE Shape {
+                        appearance PBRAppearance {
+                          baseColor 0.12549019607843137 0.2901960784313726 0.5294117647058824
+                        }
+                        geometry Box {
+                          size 0.15 0.01 0.1
+                        }
+                      }
+                    ]
+                    boundingObject USE G_BLUE_TABLE
+                    physics Physics {
+                    }
                   }
                 }
               ]
