@@ -103,6 +103,29 @@ Solid {
               size 0.5 0.01 0.1
             }
           }
+          HingeJoint {
+            jointParameters HingeJointParameters {
+              axis 0 0 1
+              anchor 0.25 0 0
+            }
+            endPoint Solid {
+              translation 0.3 0 0
+              rotation 0 0 1 0
+              children [
+                DEF G_GREEN_TABLE Shape {
+                  appearance PBRAppearance {
+                    baseColor 0.45098039215686275 0.8235294117647058 0.08627450980392157
+                  }
+                  geometry Box {
+                    size 0.1 0.01 0.1
+                  }
+                }
+              ]
+              boundingObject USE G_GREEN_TABLE
+              physics Physics {
+              }
+            }
+          }
         ]
         boundingObject USE G_RED_TABLE
         physics Physics {
